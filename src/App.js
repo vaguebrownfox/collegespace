@@ -7,5 +7,15 @@ class App extends Component {
         return <DrawerNavigator />;
     }
 }
- 
+
 export default App;
+
+//                 • What does the fox say ? •
+//  /¯      ∆__∆    ˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘˘
+//  \_______\··/
+//  /¬ ¬  ¬  \/
+//  \¬_„_„„_¬„/
+//  / |    | |
+// /  /    / |
+// ˘  ˘   ˘  ˘
+//  J_Fox
