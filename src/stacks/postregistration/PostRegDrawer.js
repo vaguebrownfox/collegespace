@@ -45,7 +45,7 @@ const CustomDrawerContent = (props) => {
 const PostRegDrawer = () => {
     return (
         <PostRegDrawerNav.Navigator
-            initialRouteName="Home"
+            initialRouteName="Task"
             drawerContent={(props) => <CustomDrawerContent {...props} />}>
             <PostRegDrawerNav.Screen
                 name="Home"
