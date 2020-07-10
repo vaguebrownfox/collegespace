@@ -1,12 +1,16 @@
 //import liraries
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Button } from 'react-native';
 
 // create a component
-const TaskScreen = () => {
+const TaskScreen = ({ navigation }) => {
     return (
         <View style={styles.container}>
             <Text>TaskScreen</Text>
+            <Button
+                title="Drawer"
+                onPress={() => navigation.navigate('Home')}
+            />
         </View>
     );
 };

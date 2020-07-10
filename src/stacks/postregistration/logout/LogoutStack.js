@@ -3,15 +3,21 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import LogoutScreen from './LogoutScreen';
 
+import HeaderLeft from '../../../shared/HeaderLeft';
+import { headerStyle } from '../../../shared/ScreenOptions';
+
 const LogoutStackNav = createStackNavigator();
 
-const LogoutStack = () => {
+const LogoutStack = ({ navigation }) => {
     return (
-        <LogoutStackNav.Navigator>
+        <LogoutStackNav.Navigator screenOptions={headerStyle}>
             <LogoutStackNav.Screen
                 name="Logout"
                 component={LogoutScreen}
-                options={{ title: 'Logout' }}
+                options={{
+                    title: 'Logout',
+                    headerLeft: () => <HeaderLeft navigation={navigation} />,
+                }}
             />
         </LogoutStackNav.Navigator>
     );

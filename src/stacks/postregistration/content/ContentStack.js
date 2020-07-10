@@ -3,15 +3,21 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import ContentScreen from './ContentScreen';
 
+import HeaderLeft from '../../../shared/HeaderLeft';
+import { headerStyle } from '../../../shared/ScreenOptions';
+
 const ContentStackNav = createStackNavigator();
 
-const ContentStack = () => {
+const ContentStack = ({ navigation }) => {
     return (
-        <ContentStackNav.Navigator>
+        <ContentStackNav.Navigator screenOptions={headerStyle}>
             <ContentStackNav.Screen
                 name="Content"
                 component={ContentScreen}
-                options={{ title: 'Content' }}
+                options={{
+                    title: 'Content',
+                    headerLeft: () => <HeaderLeft navigation={navigation} />,
+                }}
             />
         </ContentStackNav.Navigator>
     );
