@@ -2,15 +2,15 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, Button } from 'react-native';
 
+import TaskCard from './TaskCard';
+
 // create a component
 const TaskScreen = ({ navigation }) => {
     return (
         <View style={styles.container}>
-            <Text>TaskScreen</Text>
-            <Button
-                title="Drawer"
-                onPress={() => navigation.navigate('Home')}
-            />
+            <TaskCard />
+            <TaskCard />
+            <TaskCard />
         </View>
     );
 };
@@ -19,7 +19,7 @@ const TaskScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
+        justifyContent: 'flex-start',
         alignItems: 'center',
         backgroundColor: '#fff',
     },
