@@ -1,7 +1,7 @@
 //import liraries
 import React, { Component, useContext, useEffect } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import { Container, Content, Card, Form } from 'native-base';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { Container, Content, Card, Form, Button } from 'native-base';
 
 import Colors from '../../shared/Colors';
 
@@ -10,21 +10,44 @@ import { Context as RegContext } from '../../context/RegContext';
 import UserType from './UserTypeComponent';
 import Institution from './InstitutionSelectComponent';
 import Locality from './LocationSelectComponent';
+import Description from './DescriptionComponent';
 
 // create a component
-const RegisterScreen = () => {
+const RegisterScreen = ({ navigation }) => {
     const { state, loadInstitutions } = useContext(RegContext);
+
     useEffect(() => {
         loadInstitutions();
     }, []);
+
     return (
         <Container>
             <View style={{ padding: 8 }}>
-                <UserType />
-                <Institution />
-                <Locality />
+                <ScrollView>
+                    <UserType />
+                    <Institution />
+                    <Locality />
+                    <Description />
+
+                    <Next nav={navigation} />
+                </ScrollView>
             </View>
         </Container>
+    );
+};
+
+const Next = ({ nav }) => {
+    const onPressNextHandler = () => {
+        // Add check for null values
+        nav.navigate('RegisterNext');
+    };
+
+    return (
+        <View style={styles.buttonView}>
+            <Button style={styles.button} onPress={onPressNextHandler}>
+                <Text style={styles.bt}>Next</Text>
+            </Button>
+        </View>
     );
 };
 
@@ -56,6 +79,29 @@ const styles = StyleSheet.create({
 
         borderColor: 'red',
         borderWidth: 0,
+    },
+    buttonView: {
+        flexDirection: 'row',
+        justifyContent: 'flex-end',
+        marginVertical: 8,
+        padding: 16,
+
+        borderColor: 'red',
+        borderWidth: 0,
+    },
+    button: {
+        borderRadius: 8,
+        backgroundColor: Colors.headerBackground,
+        width: 100,
+        justifyContent: 'center',
+
+        borderWidth: 0,
+        borderColor: 'red',
+    },
+    bt: {
+        color: Colors.headerTint,
+        fontSize: 16,
+        fontWeight: 'bold',
     },
 });
 

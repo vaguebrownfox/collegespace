@@ -10,11 +10,13 @@ import { Context as RegContext } from '../../context/RegContext';
 // create a component
 const InstitutionSelect = () => {
     const { state, updateInstitution } = useContext(RegContext);
+
     return (
         <Card>
             <View style={styles.pickerView}>
                 <Text style={styles.pickerType}>Institution</Text>
                 <Form>
+                    {/* Add touchable and modal over this picker for search and select */}
                     <Picker
                         note
                         mode="dropdown"

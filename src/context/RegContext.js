@@ -2,7 +2,16 @@ import createDataContext from './createDataContext';
 
 const iniState = {
     userType: 'Select',
-    selectedInstitution: { id: '0', name: 'Select', locality: 'Select' },
+    selectedInstitution: {
+        city: 'Select',
+        district: 'Select',
+        code: 'Select',
+        locality: 'Select',
+        address: 'Select',
+        id: 'Select',
+        name: 'Select',
+        state: 'Select',
+    },
     institutionList: [],
 };
 
@@ -29,14 +38,24 @@ const regReducer = (state, action) => {
 const _fetchInstitutions = () => {
     institutionList = [
         {
-            id: '0db2aacc-c754-11ea-9ddc-3d1305b993be',
-            name: 'ADVENT CHRISTIAN ',
+            city: 'CHENNAI',
+            district: 'CHENNAI',
+            code: '33020901301',
             locality: 'CHENNAI',
+            address: 'NO 42 VELACHERY MAIN ROAD, GUINDY, CHENNAI - 600032',
+            id: '0db2aacc-c754-11ea-9ddc-3d1305b993be',
+            name: 'ADVENT CHRISTIAN MIDDLE SCHOOL - GUINDY',
+            state: 'TAMIL NADU',
         },
         {
+            city: 'CHENNAI',
+            district: 'CHENNAI',
+            code: '33020300913',
+            locality: 'CHENNAI',
+            address: 'D S MEMORIAL MATRICULATION SCHOOL',
             id: '8ed3090f-c754-11ea-96ce-3d1305b993be',
             name: 'S.NO',
-            locality: 'CHENNAI',
+            state: 'TAMIL NADU',
         },
     ];
     return institutionList;

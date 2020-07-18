@@ -10,6 +10,7 @@ import { Context as RegContext } from '../../context/RegContext';
 // create a component
 const LocationSelect = () => {
     const { state } = useContext(RegContext);
+
     return (
         <Card>
             <View style={styles.pickerView}>

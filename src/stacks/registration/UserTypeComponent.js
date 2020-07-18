@@ -10,6 +10,7 @@ import { Context as RegContext } from '../../context/RegContext';
 // create a component
 const UserType = () => {
     const { state, updateUserType } = useContext(RegContext);
+
     return (
         <Card>
             <View style={styles.pickerView}>
