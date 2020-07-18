@@ -10,7 +10,8 @@ const RootSwitchNav = () => {
     return (
         <AuthProvider>
             <NavigationContainer>
-                <PostRegDrawer />
+                {/* <PostRegDrawer /> */}
+                <RegisterStack />
             </NavigationContainer>
         </AuthProvider>
     );

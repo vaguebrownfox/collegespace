@@ -1,41 +1,38 @@
 //import liraries
-import React, { Component, useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import { Container, Content, Card, Form } from 'native-base';
+import { Card, Form, Picker } from 'native-base';
 
 import Colors from '../../shared/Colors';
 
 import { Context as RegContext } from '../../context/RegContext';
 
-import UserType from './UserTypeComponent';
-import Institution from './InstitutionSelectComponent';
-import Locality from './LocationSelectComponent';
-
 // create a component
-const RegisterScreen = () => {
-    const { state, loadInstitutions } = useContext(RegContext);
-    useEffect(() => {
-        loadInstitutions();
-    }, []);
+const LocationSelect = () => {
+    const { state } = useContext(RegContext);
     return (
-        <Container>
-            <View style={{ padding: 8 }}>
-                <UserType />
-                <Institution />
-                <Locality />
+        <Card>
+            <View style={styles.pickerView}>
+                <Text style={styles.pickerType}>Locality</Text>
+                <Form>
+                    <Picker
+                        note
+                        mode="dropdown"
+                        style={{ width: 120 }}
+                        selectedValue={state.selectedInstitution.locality}>
+                        <Picker.Item
+                            label={state.selectedInstitution.locality}
+                            value={null}
+                        />
+                    </Picker>
+                </Form>
             </View>
-        </Container>
+        </Card>
     );
 };
 
 // define your styles
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#fff',
-    },
     pickerView: {
         alignItems: 'center',
         flexDirection: 'row',
@@ -60,4 +57,4 @@ const styles = StyleSheet.create({
 });
 
 //make this component available to the app
-export default RegisterScreen;
+export default LocationSelect;
