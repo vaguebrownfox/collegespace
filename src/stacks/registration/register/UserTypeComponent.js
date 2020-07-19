@@ -24,7 +24,7 @@ const UserType = () => {
                         onValueChange={(itemValue, itemIndex) => {
                             updateUserType(itemValue);
                         }}>
-                        <Picker.Item label="Select" value={null} />
+                        <Picker.Item label="Select" value="Select" />
                         <Picker.Item label="Student" value="Student" />
                         <Picker.Item label="Teacher" value="Teacher" />
                     </Picker>

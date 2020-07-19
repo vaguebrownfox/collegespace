@@ -38,7 +38,7 @@ const InstitutionSelect = () => {
                                 }}>
                                 <Picker.Item
                                     label={state.selectedInstitution.name}
-                                    value={state.selectedInstitutionull}
+                                    value={state.selectedInstitution}
                                 />
                                 <Picker.Item label="Search" value={null} />
                             </Picker>
