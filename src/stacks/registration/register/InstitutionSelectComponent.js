@@ -3,28 +3,38 @@ import React, { useContext } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { Card, Form, Picker } from 'native-base';
 
-import Colors from '../../shared/Colors';
+import Colors from '../../../shared/Colors';
 
-import { Context as RegContext } from '../../context/RegContext';
+import { Context as RegContext } from '../../../context/RegContext';
 
 // create a component
-const LocationSelect = () => {
-    const { state } = useContext(RegContext);
+const InstitutionSelect = () => {
+    const { state, updateInstitution } = useContext(RegContext);
 
     return (
         <Card>
             <View style={styles.pickerView}>
-                <Text style={styles.pickerType}>Locality</Text>
+                <Text style={styles.pickerType}>Institution</Text>
                 <Form>
+                    {/* Add touchable and modal over this picker for search and select */}
                     <Picker
                         note
                         mode="dropdown"
                         style={{ width: 120 }}
-                        selectedValue={state.selectedInstitution.locality}>
-                        <Picker.Item
-                            label={state.selectedInstitution.locality}
-                            value={null}
-                        />
+                        selectedValue={state.selectedInstitution}
+                        onValueChange={(itemValue, itemIndex) => {
+                            updateInstitution(itemValue);
+                        }}>
+                        <Picker.Item label="Select" value={null} />
+                        {state.institutionList.map((i) => {
+                            return (
+                                <Picker.Item
+                                    key={i.id}
+                                    label={i.name}
+                                    value={i}
+                                />
+                            );
+                        })}
                     </Picker>
                 </Form>
             </View>
@@ -58,4 +68,4 @@ const styles = StyleSheet.create({
 });
 
 //make this component available to the app
-export default LocationSelect;
+export default InstitutionSelect;

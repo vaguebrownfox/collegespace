@@ -1,4 +1,5 @@
 import createDataContext from './createDataContext';
+import Colors from '../shared/Colors';
 
 const iniState = {
     userType: 'Select',
@@ -13,6 +14,24 @@ const iniState = {
         state: 'Select',
     },
     institutionList: [],
+    input: {
+        name: '',
+        lastname: '',
+        email: '',
+        password: '',
+        mobnumber: '',
+        photo: '',
+    },
+    error: {
+        name: false,
+        lastname: false,
+        email: false,
+        password: false,
+        mobnumber: false,
+        photo: false,
+        passwordMsg: 'enter password',
+        msgColor: Colors.textLight,
+    },
 };
 
 const regReducer = (state, action) => {
@@ -30,12 +49,19 @@ const regReducer = (state, action) => {
                 selectedInstitution: action.payload,
             };
 
+        case 'UPDATE_INPUT':
+            return { ...state, input: action.payload };
+
+        case 'UPDATE_INPUT_ERROR':
+            return { ...state, error: action.payload };
+
         default:
             return state;
     }
 };
 
 const _fetchInstitutions = () => {
+    // fetch from api
     institutionList = [
         {
             city: 'CHENNAI',
@@ -82,8 +108,26 @@ const updateInstitution = (dispatch) => {
     };
 };
 
+const updateInput = (dispatch) => {
+    return (input) => {
+        dispatch({ type: 'UPDATE_INPUT', payload: input });
+    };
+};
+
+const updateInputError = (dispatch) => {
+    return (error) => {
+        dispatch({ type: 'UPDATE_INPUT_ERROR', payload: error });
+    };
+};
+
 export const { Provider, Context } = createDataContext(
     regReducer,
-    { updateUserType, updateInstitution, loadInstitutions },
+    {
+        updateUserType,
+        updateInstitution,
+        loadInstitutions,
+        updateInput,
+        updateInputError,
+    },
     iniState,
 );

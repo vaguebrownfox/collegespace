@@ -1,8 +1,8 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import RegisterScreen from './RegisterScreen';
-import RegisterNextScreen from './RegisterNextScreen';
+import RegisterScreen from './register/RegisterScreen';
+import RegisterNextScreen from './registernext/RegisterNextScreen';
 
 import { headerStyle } from '../../shared/ScreenOptions';
 import { Provider as RegProvider } from '../../context/RegContext';

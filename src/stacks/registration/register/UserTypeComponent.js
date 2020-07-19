@@ -3,9 +3,9 @@ import React, { Component, useContext } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { Card, Form, Picker } from 'native-base';
 
-import Colors from '../../shared/Colors';
+import Colors from '../../../shared/Colors';
 
-import { Context as RegContext } from '../../context/RegContext';
+import { Context as RegContext } from '../../../context/RegContext';
 
 // create a component
 const UserType = () => {

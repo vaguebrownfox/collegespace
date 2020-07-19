@@ -1,11 +1,11 @@
 //import liraries
-import React, { Component, useContext, useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
-import { Container, Content, Card, Form, Button } from 'native-base';
+import { Container, Card, Form, Button } from 'native-base';
 
-import Colors from '../../shared/Colors';
+import Colors from '../../../shared/Colors';
 
-import { Context as RegContext } from '../../context/RegContext';
+import { Context as RegContext } from '../../../context/RegContext';
 
 import UserType from './UserTypeComponent';
 import Institution from './InstitutionSelectComponent';
