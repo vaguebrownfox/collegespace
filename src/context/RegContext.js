@@ -14,6 +14,7 @@ const iniState = {
         state: 'Select',
     },
     institutionList: [],
+    listModalVisibility: false,
     input: {
         name: '',
         lastname: '',
@@ -42,6 +43,9 @@ const regReducer = (state, action) => {
 
         case 'LOAD_INSTITUTIONS':
             return { ...state, institutionList: action.payload };
+
+        case 'SHOW_LIST_MODAL':
+            return { ...state, listModalVisibility: action.payload };
 
         case 'INSTITUTION_SELECT':
             return {
@@ -100,6 +104,12 @@ const loadInstitutions = (dispatch) => {
     };
 };
 
+const showListModal = (dispatch) => {
+    return (visible) => {
+        dispatch({ type: 'SHOW_LIST_MODAL', payload: visible });
+    };
+};
+
 const updateInstitution = (dispatch) => {
     return (institution) => {
         const i =
@@ -125,6 +135,7 @@ export const { Provider, Context } = createDataContext(
     {
         updateUserType,
         updateInstitution,
+        showListModal,
         loadInstitutions,
         updateInput,
         updateInputError,

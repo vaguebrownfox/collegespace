@@ -25,13 +25,13 @@ const RegisterButton = () => {
 
     const nameValidate = () => {
         let reg = /^[a-z]+$/i;
-        if (input.name.length > 3 && reg.test(input.name)) {
+        if (input.name.length >= 3 && reg.test(input.name)) {
             localError = { ...localError, name: false };
         } else {
             localError = { ...localError, name: true };
         }
 
-        if (input.lastname.length > 3 && reg.test(input.lastname)) {
+        if (input.lastname.length >= 1 && reg.test(input.lastname)) {
             localError = { ...localError, lastname: false };
         } else {
             localError = { ...localError, lastname: true };

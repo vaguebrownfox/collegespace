@@ -14,7 +14,7 @@ const RegNextInput = () => {
     return (
         <>
             <Form>
-                <Item stackedLabel error={error.name}>
+                <Item stackedLabel success={!error.name} error={error.name}>
                     <Label>First Name</Label>
                     <Input
                         onChangeText={(text) =>
@@ -24,7 +24,10 @@ const RegNextInput = () => {
                     />
                 </Item>
 
-                <Item stackedLabel error={error.lastname}>
+                <Item
+                    stackedLabel
+                    success={!error.lastname}
+                    error={error.lastname}>
                     <Label>Last Name</Label>
                     <Input
                         onChangeText={(text) =>
@@ -34,7 +37,7 @@ const RegNextInput = () => {
                     />
                 </Item>
 
-                <Item stackedLabel error={error.email}>
+                <Item stackedLabel success={!error.email} error={error.email}>
                     <Label>Email</Label>
                     <Input
                         onChangeText={(text) =>
@@ -44,7 +47,10 @@ const RegNextInput = () => {
                     />
                 </Item>
 
-                <Item stackedLabel error={error.password}>
+                <Item
+                    stackedLabel
+                    success={!error.password}
+                    error={error.password}>
                     <Label>Password</Label>
                     <Text
                         style={{
@@ -62,7 +68,10 @@ const RegNextInput = () => {
                     />
                 </Item>
 
-                <Item stackedLabel error={error.mobnumber}>
+                <Item
+                    stackedLabel
+                    success={!error.mobnumber}
+                    error={error.mobnumber}>
                     <Label>Mobile number</Label>
                     <Input
                         keyboardType="numeric"

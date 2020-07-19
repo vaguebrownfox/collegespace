@@ -1,44 +1,61 @@
 //import liraries
 import React, { useContext } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import { Card, Form, Picker } from 'native-base';
+import {
+    View,
+    Text,
+    StyleSheet,
+    FlatList,
+    TouchableOpacity,
+} from 'react-native';
+import { Card, Form, Picker, Item, Label, Input } from 'native-base';
+import Modal from 'react-native-modal';
 
 import Colors from '../../../shared/Colors';
 
 import { Context as RegContext } from '../../../context/RegContext';
 
+import InstSearch from './InstitutionSearchModal';
+
 // create a component
 const InstitutionSelect = () => {
-    const { state, updateInstitution } = useContext(RegContext);
+    const { state, updateInstitution, showListModal } = useContext(RegContext);
 
     return (
-        <Card>
-            <View style={styles.pickerView}>
-                <Text style={styles.pickerType}>Institution</Text>
-                <Form>
-                    {/* Add touchable and modal over this picker for search and select */}
-                    <Picker
-                        note
-                        mode="dropdown"
-                        style={{ width: 120 }}
-                        selectedValue={state.selectedInstitution}
-                        onValueChange={(itemValue, itemIndex) => {
-                            updateInstitution(itemValue);
-                        }}>
-                        <Picker.Item label="Select" value={null} />
-                        {state.institutionList.map((i) => {
-                            return (
+        <>
+            <Card>
+                <TouchableOpacity onPress={() => showListModal(true)}>
+                    <View style={styles.pickerView}>
+                        <Text style={styles.pickerType}>Institution</Text>
+                        <Form>
+                            <Picker
+                                note
+                                mode="dropdown"
+                                style={{ width: 120 }}
+                                selectedValue={state.selectedInstitution}
+                                onValueChange={(itemValue, itemIndex) => {
+                                    updateInstitution(itemValue);
+                                    showListModal(true);
+                                }}>
                                 <Picker.Item
-                                    key={i.id}
-                                    label={i.name}
-                                    value={i}
+                                    label={state.selectedInstitution.name}
+                                    value={state.selectedInstitutionull}
                                 />
-                            );
-                        })}
-                    </Picker>
-                </Form>
-            </View>
-        </Card>
+                                <Picker.Item label="Search" value={null} />
+                            </Picker>
+                        </Form>
+                    </View>
+                </TouchableOpacity>
+            </Card>
+            <Modal
+                isVisible={state.listModalVisibility}
+                animationIn="slideInUp"
+                animationOut="slideOutUp"
+                onRequestClose={() => {
+                    showListModal(false);
+                }}>
+                <InstSearch />
+            </Modal>
+        </>
     );
 };
 
@@ -69,3 +86,9 @@ const styles = StyleSheet.create({
 
 //make this component available to the app
 export default InstitutionSelect;
+
+// {
+//     state.institutionList.map((i) => {
+//         return <Picker.Item key={i.id} label={i.name} value={i} />;
+//     });
+// }
