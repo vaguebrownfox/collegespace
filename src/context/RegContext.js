@@ -1,4 +1,5 @@
 import createDataContext from './createDataContext';
+import api from '../api/api';
 import Colors from '../shared/Colors';
 
 const iniState = {
@@ -64,31 +65,39 @@ const regReducer = (state, action) => {
     }
 };
 
-const _fetchInstitutions = () => {
+const _fetchInstitutions = async () => {
     // fetch from api
-    institutionList = [
-        {
-            city: 'CHENNAI',
-            district: 'CHENNAI',
-            code: '33020901301',
-            locality: 'CHENNAI',
-            address: 'NO 42 VELACHERY MAIN ROAD, GUINDY, CHENNAI - 600032',
-            id: '0db2aacc-c754-11ea-9ddc-3d1305b993be',
-            name: 'ADVENT CHRISTIAN MIDDLE SCHOOL - GUINDY',
-            state: 'TAMIL NADU',
-        },
-        {
-            city: 'CHENNAI',
-            district: 'CHENNAI',
-            code: '33020300913',
-            locality: 'CHENNAI',
-            address: 'D S MEMORIAL MATRICULATION SCHOOL',
-            id: '8ed3090f-c754-11ea-96ce-3d1305b993be',
-            name: 'S.NO',
-            state: 'TAMIL NADU',
-        },
-    ];
-    return institutionList;
+    // institutionList = [
+    //     {
+    //         city: 'CHENNAI',
+    //         district: 'CHENNAI',
+    //         code: '33020901301',
+    //         locality: 'CHENNAI',
+    //         address: 'NO 42 VELACHERY MAIN ROAD, GUINDY, CHENNAI - 600032',
+    //         id: '0db2aacc-c754-11ea-9ddc-3d1305b993be',
+    //         name: 'ADVENT CHRISTIAN MIDDLE SCHOOL - GUINDY',
+    //         state: 'TAMIL NADU',
+    //     },
+    //     {
+    //         city: 'CHENNAI',
+    //         district: 'CHENNAI',
+    //         code: '33020300913',
+    //         locality: 'CHENNAI',
+    //         address: 'D S MEMORIAL MATRICULATION SCHOOL',
+    //         id: '8ed3090f-c754-11ea-96ce-3d1305b993be',
+    //         name: 'S.NO',
+    //         state: 'TAMIL NADU',
+    //     },
+    // ];
+    // try {
+    //     await api.get('/institution/list')
+    //         .then((response))
+    //     // console.log('response', response.data.body);
+    //     return response.body;
+    // } catch (e) {
+    //     console.log(e.message);
+    //     return [];
+    // }
 };
 
 const updateUserType = (dispatch) => {
@@ -99,8 +108,13 @@ const updateUserType = (dispatch) => {
 
 const loadInstitutions = (dispatch) => {
     return () => {
-        institutionList = _fetchInstitutions();
-        dispatch({ type: 'LOAD_INSTITUTIONS', payload: institutionList });
+        api.get('/institution/list')
+            .then((res) => {
+                // console.log('load shit', res.data.body);
+                dispatch({ type: 'LOAD_INSTITUTIONS', payload: res.data.body });
+            })
+            .catch((err) => console.log('api get', err.message));
+        //dispatch({ type: 'LOAD_INSTITUTIONS', payload: institutionList });
     };
 };
 

@@ -20,6 +20,7 @@ const InstitutionSearch = () => {
 
     const [enteredName, setEnteredName] = useState('');
     const [list, setList] = useState(institutionList);
+    const [refresh, stateRefresh] = useState(true);
 
     const ListItem = ({ inst }) => {
         const onSelectItem = () => {
@@ -43,6 +44,20 @@ const InstitutionSearch = () => {
                 <Input
                     onChangeText={(text) => {
                         setEnteredName(text);
+                        if (text.length > 0) {
+                            setList(
+                                list.filter(({ name }) => {
+                                    return (
+                                        name.slice(0, text.length) ===
+                                        text.toUpperCase()
+                                    );
+                                }),
+                            );
+                        } else {
+                            setList(institutionList);
+                        }
+
+                        stateRefresh(!refresh);
                     }}
                     value={enteredName}
                 />
@@ -50,6 +65,7 @@ const InstitutionSearch = () => {
             <View style={styles.listView}>
                 <FlatList
                     data={list}
+                    extraData={refresh}
                     keyExtractor={(inst) => inst.id}
                     renderItem={({ item }) => {
                         return (

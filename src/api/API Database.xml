@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<API_Database>
+  <API_Info>
+    <Name>Get Institution List</Name>
+    <url>https://23o6ogsnle.execute-api.ap-south-1.amazonaws.com/V1/api/v1/institution/list</url>
+  </API_Info>
+  <API_Info>
+    <Name>Update User Registration</Name>
+    <url> https://23o6ogsnle.execute-api.ap-south-1.amazonaws.com/V1/api/v1/user-info/add-user</url>
+  </API_Info>
+  <API_Info>
+    <Name>User Info List</Name>
+    <url>https://23o6ogsnle.execute-api.ap-south-1.amazonaws.com/V1/api/v1/user-info/list?access=</url>
+  </API_Info>
+  <API_Info>
+    <Name>User Approval</Name>
+    <url>https://23o6ogsnle.execute-api.ap-south-1.amazonaws.com/V1/api/v1/admin/user-approval</url>
+  </API_Info>
+  <API_Info>
+    <Name>Add Institution</Name>
+    <url>https://23o6ogsnle.execute-api.ap-south-1.amazonaws.com/V1/api/v1/institution/add-institution</url>
+  </API_Info>
+  <API_Info>
+    <Name>Delete Institution</Name>
+    <url>https://23o6ogsnle.execute-api.ap-south-1.amazonaws.com/V1/api/v1/institution/delete-institution</url>
+  </API_Info>
+</API_Database>
