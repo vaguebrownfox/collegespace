@@ -23,7 +23,7 @@ const LocationSelect = () => {
                         selectedValue={state.selectedInstitution.locality}>
                         <Picker.Item
                             label={state.selectedInstitution.locality}
-                            value={null}
+                            value={state.selectedInstitution.locality}
                         />
                     </Picker>
                 </Form>
